@@ -24,12 +24,14 @@ const datos = almacen()
                         <router-link class="nav-link" to="/">Setup</router-link>
                     </li>
                     <li>
-                        <router-link
-                            v-if="datos.isLoggedIn"
-                            class="nav-link"
-                            to="/about"
-                            >About</router-link
-                        >
+                        <router-link v-if="datos.isLoggedIn" class="nav-link" to="/about">
+                            About
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link v-if="datos.isLoggedIn" class="nav-link" to="/user">
+                            Users
+                        </router-link>
                     </li>
                 </ul>
                 <form>

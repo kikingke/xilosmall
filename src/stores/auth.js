@@ -25,7 +25,7 @@ export const almacen = defineStore({
 				.then(userCredential => {
 					const user = userCredential.user
 					// alert("¡Registrado!");
-					swal('Registro exitoso...', 'OK', 'success')
+					swal.fire('Registro exitoso...', 'OK', 'success')
 				})
 				.catch(error => {
 					const errorCode = error.code
@@ -39,7 +39,7 @@ export const almacen = defineStore({
 			signInWithEmailAndPassword(auth, this.email, this.password)
 				.then(userCredential => {
 					// alert("¡Sesión iniciada!");
-					swal('Sesión iniciada...', 'Sesión iniciada', 'success')
+					swal.fire('Sesión iniciada...', 'Sesión iniciada', 'success')
 					router.push('/')
 					const user = userCredential.user
 				})
@@ -55,7 +55,7 @@ export const almacen = defineStore({
 			signOut(auth)
 				.then(() => {
 					//alert("¡Sesión finalizada!");
-					swal('Sesión finalizada...', 'Sesión finalizada', 'success')
+					swal.fire('Sesión finalizada...', 'Sesión finalizada', 'success')
 				})
 				.catch(error => {
 					const errorCode = error.code

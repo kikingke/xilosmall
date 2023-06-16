@@ -14,6 +14,12 @@ const router = createRouter({
 			name: 'About',
 			component: () => import('../Views/About.vue'),
 			meta: { requiresAuth: true }
+		},
+		{
+			path: '/user',
+			name: 'User',
+			component: () => import('../Views/User/Index.vue'),
+			meta: { requiresAuth: true }
 		}
 	]
 })
@@ -36,7 +42,7 @@ router.beforeEach(async (to, from, next) => {
 		if (await getCurrentUser()) {
 			next()
 		} else {
-			swal('No access!!!')
+			swal.fire('No access!!!')
 
 			next('/')
 		}

@@ -2,11 +2,19 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
-import { swal } from 'sweetalert2'
+import swal from 'sweetalert2'
+import vSelect from "vue-select";
 
 import './assets/main.css'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+import jquery from 'jquery'
+import lodash from 'lodash'
+import 'datatables.net-bs5'
+window.$ = jquery
+window.swal = swal
+window._ = lodash
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
@@ -27,8 +35,9 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig)
 
 const app = createApp(App)
-app.use(swal)
 app.use(createPinia())
 app.use(router)
+
+app.component("v-select", vSelect)
 
 app.mount('#app')
