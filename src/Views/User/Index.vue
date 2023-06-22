@@ -3,13 +3,13 @@
         <navbar />
 
         <div class="container">
-            <div class="w-100 my-3">
-                <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#registerPlayer">
+            <div class="w-100 my-3 d-flex justify-content-end">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerPlayer">
                     Registrar jugador
                 </button>
             </div>
-
-            <table-user />
+            
+            <table-user />           
 
         </div>
         <modal-register-player />
@@ -32,6 +32,6 @@ export default {
         TableUser,
         ModalRegisterPlayer
     },
-    // Nombre, dorsal, estado, foto, fnc(para calcular edad), categoria, y posicion.
+    
 }
 </script>
