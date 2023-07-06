@@ -1,38 +1,46 @@
 import { defineStore } from 'pinia'
 
+
 import {
-	getAuth,
-	signOut,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword
-} from 'firebase/auth'
+    addDoc,
+    collection,
+    doc,
+    getDocs,
+    getDoc,
+    onSnapshot,
+    orderBy,
+    query,
+    setDoc,
+    where,
+    deleteDoc,
+} from "firebase/firestore";
+
+import {db} from '@/Firebase/firebase'
 
 export const player = defineStore('player', {
 	state: () => ({
-        name: '',
-        dorsal: '',
-        state: '',
-        // image: null,
-        birthday: '',
-        category: '',
-        position: ''
+		user: {
+			name: '',
+			dorsal: '',
+			state: '',
+			// image: null,
+			birthday: '',
+			category: '',
+			position: ''
+		}      
 	}),
-	getters: {},
+	getters: {
+		
+	},
 	actions: {
-		signIn() {
-			const auth = getAuth()
-			signInWithEmailAndPassword(auth, this.email, this.password)
-				.then(userCredential => {
-					// alert("¡Sesión iniciada!");
-					swal.fire('Sesión iniciada...', 'Sesión iniciada', 'success')
-					router.push('/')
-					const user = userCredential.user
-				})
-				.catch(error => {
-					const errorCode = error.code
-					this.errorMessage = error.message
-					alert(this.errorMessage)
-				})
+		async addPlayer(){
+
+			try {
+				const docRef = await addDoc(collection(db, "user"), this.user);
+				console.log("Document written with ID: ", docRef.id);
+			} catch (e) {
+				console.error("Error adding document: ", e);
+			}
 		},	
 	}
 })
